@@ -1,0 +1,342 @@
+.App {
+  width: 375px;
+  height: 667px;
+
+  border: 3px solid black;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  background-color: #d9d9d9;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 20px auto; 
+}
+
+.App.AddAddrPage{
+  background-color: white;
+}
+
+.Header {
+  height: 8%;
+  width: 100%;
+
+  border-radius: 10px;
+
+  background-color: #fff;
+
+  padding: 2px;
+
+}
+
+.Header.home{
+  display: inline-flex;
+  align-items: center;
+}
+
+.Header.searchpage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  font-family: RobotoCondensed;
+
+}
+
+.Header.AddAddrPage{
+  display: inline-flex;
+
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  font-family: RobotoCondensed;
+
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+
+}
+
+.Address-text{
+  padding: 0 0 0 5px;
+
+  font-size: 13px;
+}
+
+.Location-permission-wrapper {
+  background-color: #fff;
+
+  height: 50%;
+
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction:column;
+
+  align-items: center;
+  
+  margin-top: auto;
+}
+
+.Location-perm-icon {
+  height: 90px;
+  
+  margin-top: 10px;
+}
+
+.Location-permission-text {
+  font-family: RobotoCondensed;
+}
+
+.Location-permission-text.text1{
+  font-weight: bold;
+  font-size: 18px;
+
+  margin-bottom: 2px;
+}
+
+.Location-permission-text.text2{
+  font-size: 13px;
+  text-align: center;
+  opacity: 80%;
+}
+
+.Enable-location-btn {
+  width: 95%;
+  height: 8%;
+
+  border-radius: 5px;
+  
+  color: white;
+  font-family: RobotoCondensed;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #E30B5D;
+}
+
+.Enable-location-btn:hover{
+  cursor: pointer;
+}
+
+.Search-location-btn {
+  width: 95%;
+  height: 8%;
+
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+  border-radius: 5px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.Search-location-btn:hover{
+  cursor: pointer;
+}
+
+.Search-location-text {
+  font-family: RobotoCondensed;
+  margin-left: 5px;
+  color: #E30B5D;
+}
+
+.Search-bar-wrapper {
+  width: 95%;
+  height: 35px;
+  margin-top: 25px;
+
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+  border-radius: 5px;
+
+  background-color: white;
+
+  display: flex;
+  justify-self: center;
+  align-self: center;
+
+  align-items: center;
+
+  padding: 0 0 0 9px;
+
+}
+
+.Search-bar-wrapper:hover{
+  cursor: Text;
+}
+
+.Search-addr-input{
+  width: 90%;
+  height: 30px;
+
+  display: flex;
+  justify-self: center;
+  align-self: center;
+
+  margin-top: 30px;
+
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+
+  padding: 0 0 0 8px;
+}
+
+.Search-suggestions {
+  background-color: black;
+}
+
+.Confirm-addr {
+  width: 100%;
+  height: 45%;
+
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: auto;
+
+  border-radius: 5px;
+
+  padding: 0 8px 0 8px;
+
+  font-family: RobotoCondensed;
+}
+
+.View-location-text-wrapper {
+  font-family: RobotoCondensed;
+  font-size: 15px;
+
+  padding: 0 8px 0 8px;
+  
+}
+
+.View-location-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #E30B5D;
+}
+
+.Confirm-location-btn {
+  width: 95%;
+  height: 35px;
+
+  border-radius: 5px;
+
+  background-color: #E30B5D;
+
+  color: #fff;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: auto;
+
+  margin-bottom: 30px;
+}
+
+.Confirm-location-btn:hover {
+  cursor: pointer;
+}
+
+.Address-Section {
+  margin: 20px;
+}
+
+.Location-Label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.Location-Address {
+  font-style: italic;
+  color: #555;
+}
+
+.Address-Details-Form {
+  margin: 20px;
+}
+
+.Form-Label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.Input-Field {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+
+.Address-Type-Icons {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.Icon-Wrapper {
+  text-align: center;
+}
+
+.Icon-Wrapper:hover{
+  cursor: pointer
+}
+
+.Icon-Wrapper p {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.Save-Addr-Text {
+  font-family: RobotoCondensed;
+  color: #E30B5D;
+  font-weight: bold;
+  padding: 0 0 0 10px;
+}
+
+.Submit-Button {
+  width: 95%;
+  height: 35px;
+
+  margin-top: auto;
+  margin-bottom: 30px;
+  text-align: center;
+
+  background-color: #E30B5D;
+  
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  
+  border-radius: 8px;
+  
+  cursor: pointer;
+
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+@font-face {
+  font-family: RobotoCondensed;
+  src: url('../public/RobotoCondensed-Regular.ttf');
+}
