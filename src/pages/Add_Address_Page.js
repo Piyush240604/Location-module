@@ -18,11 +18,14 @@ function AddAddrPage() {
   // Handle input changes
   const handleHouseNoChange = (e) => setHouseNo(e.target.value);
   const handleAreaChange = (e) => setArea(e.target.value);
-  const handleAddressTypeChange = (type) => setAddressType(type);
+
+  // Handle address type change and ensure only one is selected
+  const handleAddressTypeChange = (type) => {
+    setAddressType(type); // Update the selected type
+  };
 
   // Handle submit
   const handleSubmit = () => {
-    // Check if all fields are filled
     if (houseNo && area && addressType) {
       const fullAddress = {
         address,
@@ -31,23 +34,35 @@ function AddAddrPage() {
         addressType,
       };
 
+      // Save to localStorage
+      try {
+        const savedAddresses = JSON.parse(localStorage.getItem("addresses")) || [];
+        savedAddresses.push(fullAddress);
+        localStorage.setItem("addresses", JSON.stringify(savedAddresses));
+        console.log("Address saved successfully!");
+      } catch (error) {
+        console.error("Error saving address:", error);
+      }
+
+
       // Displaying or processing the full address
       console.log("Full Address Submitted: ", fullAddress);
 
       // Navigate to Home page or another page with the address
       navigate('/', { state: { addedAddress: fullAddress } });
     } else {
-      // Error message if fields are not complete
-      alert("Please fill in all the details.");
+      alert("Please fill in all the details and select an address type.");
     }
   };
+
+  // CSS class generator for selected icon
+  const getIconClass = (type) => (addressType === type ? "Icon-Wrapper selected" : "Icon-Wrapper");
 
   return (
     <div className="App AddAddrPage">
       {/* Header with Back Button */}
       <div className="Header AddAddrPage">
         <FaArrowLeft
-          className="Back-Button"
           onClick={() => navigate(-1)}
           style={{ cursor: 'pointer', marginRight: '10px' }}
         />
@@ -72,6 +87,7 @@ function AddAddrPage() {
             onChange={handleHouseNoChange}
           />
         </label>
+
         <label className="Form-Label">
           Apartment/Road/Area:
           <input
@@ -87,28 +103,31 @@ function AddAddrPage() {
       {/* Address Type Icons */}
       <div className="Address-Type-Icons">
         <div
-          className="Icon-Wrapper"
+          className={getIconClass("Home")}
           onClick={() => handleAddressTypeChange("Home")}
         >
           <FaHome size={30} title="Home" />
           <p>Home</p>
         </div>
+
         <div
-          className="Icon-Wrapper"
+          className={getIconClass("Office")}
           onClick={() => handleAddressTypeChange("Office")}
         >
           <FaBriefcase size={30} title="Office" />
           <p>Office</p>
         </div>
+
         <div
-          className="Icon-Wrapper"
+          className={getIconClass("Friends")}
           onClick={() => handleAddressTypeChange("Friends")}
         >
           <FaUserFriends size={30} title="Friends" />
           <p>Friends</p>
         </div>
+
         <div
-          className="Icon-Wrapper"
+          className={getIconClass("Other")}
           onClick={() => handleAddressTypeChange("Other")}
         >
           <FaMapMarkerAlt size={30} title="Other" />

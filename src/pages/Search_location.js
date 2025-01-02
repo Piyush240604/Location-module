@@ -2,6 +2,7 @@
 import { GoogleMap, useJsApiLoader, StandaloneSearchBox, Marker } from '@react-google-maps/api';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { FaLocationCrosshairs } from "react-icons/fa6";
 
 // Import CSS
 import '../App.css';
@@ -14,6 +15,7 @@ function SearchLocationPage() {
     const [selectedLocation, setSelectedLocation] = useState("")
     const [selectedAddress, setSelectedAddress] = useState("")
 
+    // Load the google-maps api
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: process.env.REACT_APP_GOOGLEMAPS_API_KEY,
@@ -64,6 +66,25 @@ function SearchLocationPage() {
         });
     };
 
+    const handleEnableLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    navigate('/enable-location-page', {
+                        state: { latitude, longitude }
+                    });
+                },
+                (error) => {
+                    console.error("Geolocation error:", error.message);
+                    alert("Failed to get location. Please enable location permissions.");
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    };
+
     // Set center
     const center = selectedLocation || { lat: 13.0843, lng: 80.2705 }
 
@@ -105,7 +126,22 @@ function SearchLocationPage() {
                 </GoogleMap>
             </div>
             )}
+
+            <div className="Enable-Location-Wrapper">
+                <div className="Enable-current-location">
+                    <FaLocationCrosshairs 
+                        style={{ height: "30px", width: "30px", marginLeft: "10px", color: "#E30B5D", marginRight: "10px" }}
+                    />
+                    Current Location
+                </div>
+
+                <div className="Enable-current-location-btn" onClick={() => handleEnableLocation()}>Enable</div>
+
+            </div>
+
+            <div className="Enable-Current-Location-txt" >Enable your Current location for better services</div>
             
+            {selectedLocation && (
             <div className='Confirm-addr'>
                 <div className='View-location-text-wrapper'>
                     <p className='View-location-text'>Location: </p>
@@ -114,6 +150,7 @@ function SearchLocationPage() {
 
                 <div className='Confirm-location-btn' onClick={()=>{navigate('/add-address-details', {state: {selectedAddress}})}}>Confirm Location</div>
             </div>
+            )}
 
         </div>
     )

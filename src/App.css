@@ -60,10 +60,55 @@
 
 }
 
-.Address-text{
-  padding: 0 0 0 5px;
+.Header.SavedAddrPage {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 
-  font-size: 13px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header.enable-location-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: RobotoCondensed;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+.Address-Display {
+  display: inline-block;
+  flex-direction: column;
+
+  margin-left: 10px;
+
+  width: 310px;
+
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+
+.Address-Display:hover {
+  cursor: pointer;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.Address-Type {
+  color: #E30B5D; /* Highlight color for Address Type */
+  font-weight: bold;
+  
+}
+
+.Address-Text {
+  color: #333; /* Neutral color for the address */ 
+  opacity: 80%
 }
 
 .Location-permission-wrapper {
@@ -123,6 +168,7 @@
 
 .Enable-location-btn:hover{
   cursor: pointer;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 .Search-location-btn {
@@ -141,6 +187,7 @@
 
 .Search-location-btn:hover{
   cursor: pointer;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 .Search-location-text {
@@ -171,6 +218,7 @@
 
 .Search-bar-wrapper:hover{
   cursor: Text;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 .Search-addr-input{
@@ -192,9 +240,63 @@
   background-color: black;
 }
 
+.Enable-Location-Wrapper {
+  display: inline-flex;
+
+  margin-top: 20px;
+
+}
+
+.Enable-current-location {
+  display: inline-flex;
+  font-size: 23px;
+  font-family: RobotoCondensed;
+  font-weight: bold;
+}
+
+.Enable-current-location-btn {
+  margin-left: auto;
+  margin-right: 10px;
+  
+  border-radius: 6px;
+  border: 1px solid #E30B5D;
+  background-color: white;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80px;
+
+  font-family: RobotoCondensed;
+  color: #E30B5D;
+  
+}
+
+.Enable-current-location-btn:hover {
+  background-color: #E30B5D;
+  color: white;
+  transition: background-color 0.3s color 0.3s;
+}
+
+.Enable-Current-Location-txt {
+  width: 60%;
+
+  margin-left: 50px;
+  margin-top: 5px;
+
+  font-size: 15px;
+  font-family: RobotoCondensed;
+
+  opacity: 80%;
+
+}
+
 .Confirm-addr {
   width: 100%;
-  height: 45%;
+  height: 30%;
 
   background-color: white;
 
@@ -246,6 +348,7 @@
 
 .Confirm-location-btn:hover {
   cursor: pointer;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 .Address-Section {
@@ -290,11 +393,25 @@
 }
 
 .Icon-Wrapper {
-  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
 }
 
-.Icon-Wrapper:hover{
-  cursor: pointer
+.Icon-Wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Icon-Wrapper.selected {
+  border-color: #E30B5D;
+  background-color: rgba(227, 11, 93, 0.1);
 }
 
 .Icon-Wrapper p {
@@ -335,6 +452,87 @@
 
 }
 
+.Address-List {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.Address-Item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Address-Item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.Address-Header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #E30B5D;
+  margin-bottom: 5px;
+}
+
+.Address-Details {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.No-Addresses {
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Back-Button {
+  background-color: #E30B5D;
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  padding: 10px 20px;
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  margin-top: auto;
+  margin-bottom: 15px;
+  align-self: center;
+
+  transition: background-color 0.2s ease;
+}
+
+.New-Address-btn {
+  width: 60%;
+  height: 30px;
+
+  background-color: #E30B5D;
+
+  align-self: center;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-family: RobotoCondensed;
+  color: #fff;
+  font-size: 17px;
+}
+
+.New-Address-btn:hover {
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
 
 @font-face {
   font-family: RobotoCondensed;
